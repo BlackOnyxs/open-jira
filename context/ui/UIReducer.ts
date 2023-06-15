@@ -4,6 +4,7 @@ type UIType =
     | { type: '[UI] - Open Sidebar' }
     | { type: '[UI] - Close Sidebar' }
     | { type: '[UI] - Set isAddingEntry', payload: boolean }
+    | { type: '[UI] - Toggle Dragging', payload: boolean }
 
 export const uiReducer = ( state: UIState, action: UIType): UIState => {
     switch (action.type) {
@@ -21,6 +22,11 @@ export const uiReducer = ( state: UIState, action: UIType): UIState => {
             return {
                 ...state,
                 isAddingEntry: action.payload
+            }
+        case '[UI] - Toggle Dragging': 
+            return {
+                ...state,
+                isDragging: action.payload
             }
         default:
             return state;

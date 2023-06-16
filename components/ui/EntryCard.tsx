@@ -4,35 +4,35 @@ import { Card, CardActionArea, CardActions, CardContent, Typography } from '@mui
 import { UIContext } from '../../context/ui';
 import { Entry } from '../../interfaces';
 
-interface Props { 
+interface Props {
   entry: Entry;
 }
 
-export const EntryCard:FC<Props> = ({ entry }) => {
+export const EntryCard: FC<Props> = ({ entry }) => {
 
-  const { toggleDragging } = useContext( UIContext );
+  const { toggleDragging } = useContext(UIContext);
 
-  const onDragStart = ( event: DragEvent ) =>{
-    event.dataTransfer.setData('text', entry._id );
+  const onDragStart = (event: DragEvent) => {
+    event.dataTransfer.setData('text', entry._id);
     toggleDragging(true);
   }
 
   return (
     <Card
-        sx={{ marginBottom: 1 }}
-        draggable
-        onDragStart={ onDragStart }
-        onDragEnd={ () => toggleDragging(false) }
+      sx={{ marginBottom: 1 }}
+      draggable
+      onDragStart={onDragStart}
+      onDragEnd={() => toggleDragging(false)}
     >
-        <CardActionArea>
-            <CardContent>
-              <Typography sx={{ whiteSpace: 'pre-line'}}>{entry.description}</Typography>
-            </CardContent>
+      <CardActionArea>
+        <CardContent>
+          <Typography sx={{ whiteSpace: 'pre-line' }}>{entry.description}</Typography>
+        </CardContent>
 
-            <CardActions sx={{ display: 'flex', justifyContent: 'end', paddingRight: 2 }}>
-              <Typography variant='body2'>{entry.createdAt}</Typography>
-            </CardActions>
-        </CardActionArea>
+        <CardActions sx={{ display: 'flex', justifyContent: 'end', paddingRight: 2 }}>
+          <Typography variant='body2'>{entry.createdAt}</Typography>
+        </CardActions>
+      </CardActionArea>
     </Card>
   )
 }

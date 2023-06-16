@@ -1,0 +1,1 @@
+export {default as entiesAppi } from './entriesAppi';

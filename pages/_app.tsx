@@ -6,18 +6,23 @@ import { EntriesProvider } from '../context/entries';
 import { UIProvider } from '../context/ui';
 
 import { darkTheme, lightTheme } from '../themes';
+import { SnackbarProvider } from 'notistack';
 
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
-    <EntriesProvider>
-      <UIProvider>
-        <ThemeProvider theme={ darkTheme }>
-          <CssBaseline />
-          <Component {...pageProps} />
-        </ThemeProvider>
-      </UIProvider>
-    </EntriesProvider>
+    <SnackbarProvider maxSnack={ 3 }>
+
+      <EntriesProvider>
+        <UIProvider>
+          <ThemeProvider theme={ darkTheme }>
+            <CssBaseline />
+            <Component {...pageProps} />
+          </ThemeProvider>
+        </UIProvider>
+      </EntriesProvider>
+    </SnackbarProvider>
+      
   )
 }
 

@@ -1,1 +1,2 @@
-export {default as entiesAppi } from './entriesAppi';
+
+export {default as entriesApi } from './entriesAppi';

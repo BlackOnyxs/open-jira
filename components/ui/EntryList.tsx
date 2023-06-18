@@ -15,10 +15,10 @@ interface Props {
 
 export const EntryList:FC<Props> = ({ status }) => {
 
-    const { entries, updatedEntry } = useContext( EntriesContext );
+    const { entries, updateEntry } = useContext( EntriesContext );
     const { isDragging, toggleDragging } = useContext( UIContext );
 
-    const entriesByStatus = useMemo( () => entries.filter( entry => entry.status === status ), [entries]);
+    const entriesByStatus = useMemo( () => entries.filter( entry => entry.status === status ), [ entries ]);
 
     const allowDrop = (event: DragEvent<HTMLDivElement> ) => {
         event.preventDefault();
@@ -29,7 +29,7 @@ export const EntryList:FC<Props> = ({ status }) => {
         
         const entry = entries.find( e => e._id === id )!;
         entry.status = status;
-        updatedEntry( entry );
+        updateEntry( entry );
 
         toggleDragging(false);
     }
